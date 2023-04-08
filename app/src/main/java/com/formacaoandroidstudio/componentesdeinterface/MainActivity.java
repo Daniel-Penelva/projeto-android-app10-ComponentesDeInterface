@@ -42,15 +42,28 @@ public class MainActivity extends AppCompatActivity {
 
         /* isChecked verifica se o checkBox está marcado - retorna um boolean (true - marcado) (false - desmarcado) */
         if (checkJava.isChecked()) {
-            texto = "JAVA selecionado - ";
+
+            /* Vai ser capturado do attributes 'text' o valor 'JAVA'. Essa captura vai ser através do getText() */
+            String valorSelecionada = checkJava.getText().toString();
+            texto = valorSelecionada + " - ";
+
         }if (checkPhp.isChecked()) {
-            texto = texto + "PHP selecionado - ";
+
+            String valorSelecionada = checkPhp.getText().toString();
+            texto = texto + valorSelecionada + " - ";
+
         }if (checkPython.isChecked()) {
-            texto = texto + "PYTHON selecionado - ";
+
+            String valorSelecionada = checkPython.getText().toString();
+            texto = texto + valorSelecionada + " - ";
+
         }if (checkC.isChecked()) {
-            texto = texto + "C# selecionado - ";
+
+            String valorSelecionada = checkC.getText().toString();
+            texto = texto + valorSelecionada;
         }
 
+        /* Resulta o valor da programação no componente textView */
         textoProgramacao.setText(texto);
     }
 
@@ -68,8 +81,18 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void limpar(View view) {
+
+        /* Limpando os campos de textos e o textView */
         campoNome.setText("");
         campoEmail.setText("");
+        textoResultado.setText("");
+
+        /* Limpando os checkBox e o textView */
+        checkJava.setChecked(false);
+        checkPhp.setChecked(false);
+        checkPython.setChecked(false);
+        checkC.setChecked(false);
+        textoProgramacao.setText("");
     }
 
 }
