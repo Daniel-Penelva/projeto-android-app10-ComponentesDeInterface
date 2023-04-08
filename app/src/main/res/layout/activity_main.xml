@@ -28,6 +28,38 @@
             android:inputType="textEmailAddress" />
     </com.google.android.material.textfield.TextInputLayout>
 
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="5dp"
+        android:text="Linguagem Programação:"
+        android:textSize="18sp" />
+
+    <CheckBox
+        android:id="@+id/checkJava"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="JAVA" />
+
+    <CheckBox
+        android:id="@+id/checkPhp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="PHP" />
+
+    <CheckBox
+        android:id="@+id/checkPython"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="PYTHON" />
+
+    <CheckBox
+        android:id="@+id/checkC"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="C#" />
+
     <Button
         android:id="@+id/button"
         android:layout_width="match_parent"
@@ -47,6 +79,13 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Resultado"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/textProgramacao"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Programação"
         android:textSize="18sp" />
 
 </LinearLayout>

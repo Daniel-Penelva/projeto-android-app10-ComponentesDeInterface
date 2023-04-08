@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TextView;
 
@@ -14,7 +15,9 @@ public class MainActivity extends AppCompatActivity {
 
     private EditText campoNome;
     private TextInputEditText campoEmail;
-    private TextView textoResultado;
+    private TextView textoResultado, textoProgramacao;
+
+    private CheckBox checkJava, checkPhp, checkPython, checkC;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,9 +28,36 @@ public class MainActivity extends AppCompatActivity {
         campoNome = findViewById(R.id.editNome);
         campoEmail = findViewById(R.id.editEmail);
         textoResultado = findViewById(R.id.textResultado);
+        textoProgramacao = findViewById(R.id.textProgramacao);
+
+        checkJava = findViewById(R.id.checkJava);
+        checkPhp = findViewById(R.id.checkPhp);
+        checkPython = findViewById(R.id.checkPython);
+        checkC = findViewById(R.id.checkC);
     }
 
-    public void enviar(View view){
+    public void checkBox() {
+
+        String texto = "";
+
+        /* isChecked verifica se o checkBox está marcado - retorna um boolean (true - marcado) (false - desmarcado) */
+        if (checkJava.isChecked()) {
+            texto = "JAVA selecionado - ";
+        }if (checkPhp.isChecked()) {
+            texto = texto + "PHP selecionado - ";
+        }if (checkPython.isChecked()) {
+            texto = texto + "PYTHON selecionado - ";
+        }if (checkC.isChecked()) {
+            texto = texto + "C# selecionado - ";
+        }
+
+        textoProgramacao.setText(texto);
+    }
+
+    public void enviar(View view) {
+
+        /* Chamando o método checkBox */
+        checkBox();
 
         /* Recupera o campo nome */
         String nome = campoNome.getText().toString();
@@ -37,14 +67,15 @@ public class MainActivity extends AppCompatActivity {
         textoResultado.setText("Nome: " + nome + " - Email: " + email);
     }
 
-    public void limpar(View view){
+    public void limpar(View view) {
         campoNome.setText("");
         campoEmail.setText("");
     }
+
 }
 
 /* Anotações:
- * Caixa de Texto
+ * Caixa de Texto (TextView e TextInputLayout)
  *
  *  Em attributes:
  *  -> hint = define um texto de orientação para que o usuária saiba o que deve ser preenchido.
@@ -53,6 +84,11 @@ public class MainActivity extends AppCompatActivity {
  *
  * -> TextInputLayout = esse input permite aparecer o hint mesmo depois de ter clicado na caixa de texto.
  *
+ * ---------------------------------------------------------------
+ * Caixa de Seleção (checkBox)
+ * Pode ser marcado mais de um item.
+ *
+ * ---------------------------------------------------------------
  * Detalhes sobre a Classe MainActivity.java
  * Toda vez que estiver executando o app, será executado essa classe MainActivity.
  *
