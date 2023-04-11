@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.RadioButton;
 import android.widget.TextView;
 
 import com.google.android.material.textfield.TextInputEditText;
@@ -15,9 +16,11 @@ public class MainActivity extends AppCompatActivity {
 
     private EditText campoNome;
     private TextInputEditText campoEmail;
-    private TextView textoResultado, textoProgramacao;
+    private TextView textoResultado, textoProgramacao, textoSexo;
 
     private CheckBox checkJava, checkPhp, checkPython, checkC;
+
+    private RadioButton sexoMasculino, sexoFeminino;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,7 +37,22 @@ public class MainActivity extends AppCompatActivity {
         checkPhp = findViewById(R.id.checkPhp);
         checkPython = findViewById(R.id.checkPython);
         checkC = findViewById(R.id.checkC);
+
+        sexoMasculino = findViewById(R.id.radioButtonMasc);
+        sexoFeminino = findViewById(R.id.radioButtonFem);
+        textoSexo = findViewById(R.id.textResultadoSexo);
     }
+
+    public void radioButton(){
+
+        if(sexoMasculino.isChecked()){
+          textoSexo.setText("Masculino");
+
+        }else if(sexoFeminino.isChecked()){
+          textoSexo.setText("Feminino");
+        }
+    }
+
 
     public void checkBox() {
 
@@ -67,7 +85,11 @@ public class MainActivity extends AppCompatActivity {
         textoProgramacao.setText(texto);
     }
 
+    /* Método de ação do button */
     public void enviar(View view) {
+
+        /* Chamando o método radioButton*/
+        radioButton();
 
         /* Chamando o método checkBox */
         checkBox();
@@ -93,6 +115,11 @@ public class MainActivity extends AppCompatActivity {
         checkPython.setChecked(false);
         checkC.setChecked(false);
         textoProgramacao.setText("");
+
+        /*Limpando o radioButton e o textView */
+        sexoMasculino.setChecked(false);
+        sexoFeminino.setChecked(false);
+        textoSexo.setText("");
     }
 
 }
@@ -110,6 +137,13 @@ public class MainActivity extends AppCompatActivity {
  * ---------------------------------------------------------------
  * Caixa de Seleção (checkBox)
  * Pode ser marcado mais de um item.
+ *
+ * ---------------------------------------------------------------
+ * Botão de opção (radioButton e o radioGroup)
+ * Pode ser marcado apenas uma das opções.
+ *
+ * O radioGroup permite agrupar vários radioButton. E só é permitido marcar APENAS UMA opção.
+ * Já o radioButton NÃO estando na estrutura do radioGroup é possível marcar MAIS DE UMA opção.
  *
  * ---------------------------------------------------------------
  * Detalhes sobre a Classe MainActivity.java
