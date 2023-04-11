@@ -45,12 +45,17 @@ public class MainActivity extends AppCompatActivity {
 
     public void radioButton(){
 
+        String resultadoSexo = "";
+
         if(sexoMasculino.isChecked()){
-          textoSexo.setText("Masculino");
+            resultadoSexo = sexoMasculino.getText().toString();
 
         }else if(sexoFeminino.isChecked()){
-          textoSexo.setText("Feminino");
+            resultadoSexo = sexoFeminino.getText().toString();
         }
+
+        /* Capturando o valor do sexo */
+        textoSexo.setText(resultadoSexo);
     }
 
 
