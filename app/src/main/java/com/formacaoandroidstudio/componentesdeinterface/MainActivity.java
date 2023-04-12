@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 
 import com.google.android.material.textfield.TextInputEditText;
@@ -21,6 +22,7 @@ public class MainActivity extends AppCompatActivity {
     private CheckBox checkJava, checkPhp, checkPython, checkC;
 
     private RadioButton sexoMasculino, sexoFeminino;
+    private RadioGroup opcaoSexo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,21 +43,30 @@ public class MainActivity extends AppCompatActivity {
         sexoMasculino = findViewById(R.id.radioButtonMasc);
         sexoFeminino = findViewById(R.id.radioButtonFem);
         textoSexo = findViewById(R.id.textResultadoSexo);
+        opcaoSexo = findViewById(R.id.radioGroupSexo);
+
+        /* A opção sexo (GroupButton) adiciona um termo chamado ouvinte, que vai ficar escutando qualquer
+        * mudança que ocorra nos itens (masc/fem). A alteração dos itens vai ser em tempo de execução. */
+        radioButton();
     }
 
     public void radioButton(){
 
-        String resultadoSexo = "";
+        opcaoSexo.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
 
-        if(sexoMasculino.isChecked()){
-            resultadoSexo = sexoMasculino.getText().toString();
+                /* Anotações:
+                * int checkedId - retorna o identificador do radioButton do tipo inteiro.*/
 
-        }else if(sexoFeminino.isChecked()){
-            resultadoSexo = sexoFeminino.getText().toString();
-        }
+                if(checkedId == R.id.radioButtonMasc){
+                    textoSexo.setText("Masculino");
 
-        /* Capturando o valor do sexo */
-        textoSexo.setText(resultadoSexo);
+                }else if(checkedId == R.id.radioButtonFem){
+                    textoSexo.setText("Feminino");
+                }
+            }
+        });
     }
 
 
@@ -92,9 +103,6 @@ public class MainActivity extends AppCompatActivity {
 
     /* Método de ação do button */
     public void enviar(View view) {
-
-        /* Chamando o método radioButton*/
-        radioButton();
 
         /* Chamando o método checkBox */
         checkBox();
